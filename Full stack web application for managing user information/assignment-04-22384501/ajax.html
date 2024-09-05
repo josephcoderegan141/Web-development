@@ -1,0 +1,244 @@
+<!-- w3schools reference -->
+<!-- WORKS IN FIREFOX AND MICROSOFT EDGE -->
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Submit Form via AJAX</title>
+
+    <script>
+
+
+
+///////////////////// java script that sends inputed values of customer to php to be put in to database
+
+function sendData() {
+    // Get all the form values
+    var title = document.getElementById("title").value;
+    var name = document.getElementById("name").value;
+    var lname = document.getElementById("lname").value;
+    var mobile = document.getElementById("mobile").value;
+    var email = document.getElementById("email").value;
+    var HomeAddress = document.getElementById("HomeAddress").value;
+    var ShippingAddress = document.getElementById("ShippingAddress").value;
+    var Town = document.getElementById("Town").value;
+    var County = document.getElementById("County").value;
+    var Eircode = document.getElementById("Eircode").value;
+
+    
+
+  
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            alert("Data Submitted Successfully");
+        }
+    };
+    xmlhttp.open("POST", "createUser.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // Send all data in one request
+    xmlhttp.send("title=" + encodeURIComponent(title) +
+        "&name=" + encodeURIComponent(name) +
+        "&lname=" + encodeURIComponent(lname) +
+        "&mobile=" + encodeURIComponent(mobile) +
+        "&email=" + encodeURIComponent(email) +
+        "&HomeAddress=" + encodeURIComponent(HomeAddress) +
+        "&ShippingAddress=" + encodeURIComponent(ShippingAddress) +
+        "&Town=" + encodeURIComponent(Town) +
+        "&County=" + encodeURIComponent(County) +
+        "&Eircode=" + encodeURIComponent(Eircode));
+}
+
+/////////////////////////////////////////jquery code to search a customer taking the first abd last name of a customer via ajax
+/////////////////////////////////////////then sending it to php, php then sends all of the customers information back to ajax page where
+
+
+$(document).ready(function() {
+    $("#searchForm").submit(function(event) {
+
+        event.preventDefault(); // Prevent the default form submission
+
+        // Gather the form data
+        var formData = $(this).serialize();
+
+        // Send the data using jQuery's AJAX
+        $.ajax({
+            type: "POST",
+            url: "search.php",
+            data: formData,
+            success: function(response) {
+            
+                $("#searchResults").html(response);
+                alert("Search completed successfully.");
+            },
+            error: function() {
+                alert("An error occurred during the search.");
+            }
+        });
+    });
+});
+
+
+/////////////////////////////////updates the customers information 
+
+
+$(document).ready(function() {
+    $("#updateCustomerByMobileForm").submit(function(event) {
+        event.preventDefault();
+
+        var formData = $(this).serialize();
+
+        // Send the data using jQuery's AJAX
+        $.ajax({
+            type: "POST",
+            url: "update(extra credits).php",
+            data: formData,
+            success: function(response) {
+                $("#updateByMobileMessage").html(response);
+                alert("Customer updated successfully.");
+            },
+            error: function() {
+                alert("An error occurred during the update.");
+            }
+        });
+    });
+});
+
+
+/////////////////////////deletes a customer 
+$(document).ready(function() {
+    $("#deleteUserForm").submit(function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        var formData = $(this).serialize(); // Gather the form data
+
+        // Send the data using jQuery's AJAX
+        $.ajax({
+            type: "POST",
+            url: "delete(extra credits).php", // The PHP script to handle the deletion
+            data: formData,
+            success: function(response) {
+                alert("User deleted successfully.");
+               /////// gets rid of previously inputed custer info
+                $("#deleteUserForm").find("input[type=text], input[type=email]").val("");
+            },
+            error: function() {
+                alert("An error occurred during the deletion process.");
+            }
+        });
+    });
+});
+    </script>
+</head>
+
+
+
+
+
+
+
+
+<body>
+
+<h2>Enter Customer Information</h2>
+
+    <form action="javascript:void(0);">
+       
+        
+        <label for="title" style="display: block;">Title:</label>
+        <input type="text" id="title" name="title">
+        
+        <label for="name" style="display: block;">First name:</label> 
+        <input type="text" id="name" name="name" style="display: block;">
+  
+        <label for="lname" style="display: block;">Last name:</label>
+        <input type="text" id="lname" name="lname">
+
+        <label for="mobile" style="display: block;">Mobile:</label>
+        <input type="text" id="mobile" name="mobile">
+
+        <label for="email" style="display: block;">Email:</label>
+        <input type="text" id="email" name="email">
+
+        <label for="HomeAddress" style="display: block;">HomeAddress:</label>
+        <input type="text" id="HomeAddress" name="HomeAddress">
+
+        <label for="ShippingAddress" style="display: block;">ShippingAddress:</label>
+        <input type="text" id="ShippingAddress" name="ShippingAddress">
+
+        <label for="Town" style="display: block;">Town:</label>
+        <input type="text" id="Town" name="Town">
+
+        <label for="County" style="display: block;">County:</label>
+        <input type="text" id="County" name="County">
+
+        <label for="Eircode" style="display: block;">Eircode:</label>
+        <input type="text" id="Eircode" name="Eircode">
+   
+
+        <button type="button"  style="display: block;" onclick="sendData()">Submit</button>
+ 
+    </form>
+
+
+<h2>Search User by First and Last Name</h2>
+
+<form id="searchForm">
+    <label for="firstNameSearch">First Name:</label>
+    <input type="text" id="firstNameSearch" name="firstNameSearch" required>
+
+    <label for="lastNameSearch">Last Name:</label>
+    <input type="text" id="lastNameSearch" name="lastNameSearch" required>
+    
+    <input type="submit" value="Search">
+</form>
+
+
+<!-- prints searched results -->
+<div id="searchResults" class = "format"></div>
+
+
+<h2>Update Customer Information Based on Mobile Number</h2>
+<form id="updateCustomerByMobileForm">
+    <label for="mobileNumber">Mobile Number:</label>
+    <input type="text" id="mobileNumber" name="mobile" required>
+
+    <label for="updateFirstNameByMobile">First Name:</label>
+    <input type="text" id="updateFirstNameByMobile" name="firstName">
+
+    <label for="updateTownByMobile">Town:</label>
+    <input type="text" id="updateTownByMobile" name="town">
+
+    <label for="updateCountryByMobile">County:</label>
+    <input type="text" id="updateCountryByMobile" name="county">
+
+    <input type="submit" value="Update Customer">
+</form>
+
+
+
+
+<h2>Delete Customer</h2>
+<form id="deleteUserForm">
+    <label for="deleteEmail">Email:</label>
+    <input type="text" id="deleteEmail" name="email" required>
+
+    <label for="deletePhone">Phone:</label>
+    <input type="text" id="deletePhone" name="phone" required>
+
+    <label for="deleteName">first name:</label>
+    <input type="text" id="deleteName" name="name" required>
+    
+    <input type="submit" value="Delete User">
+</form>
+</div>
+
+
+
+</body>
+</html>
+
