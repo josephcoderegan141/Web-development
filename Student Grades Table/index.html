@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<link rel="stylesheet" href="style.css">
+<script type="text/javascript" src="script.js"></script>
+
+</head>
+
+
+<body>
+
+  <!-- <button class = "button" onclick="addRows()">Click to add Row!</button>   <button class = "button">Click to add Columne!</button> -->
+  <div>   </div>
+  <div>   </div>
+  <div>   </div>
+
+
+    <table id = "gradetable">
+      <!--row1-->>
+        <tr>      
+          <th>Name</th>
+          <th>ID numbers</th>
+          <th>Assignment 1</th>
+          <th>Assignment 2</th>
+          <th>Assignment 3</th>
+          <th>Assignment 4</th>
+          <th>Assignment 5</th>
+          <th id = "averageheader" onclick="changeGradeheader()">Average[%]</th>
+
+        </tr>
+
+                 <!-- <data -->
+
+        <tr>
+                  <!-- row2 -->
+          <td>Mary </td>
+          <td>223783957</td>
+          <td id = "c1r2" onclick="changevalue1()">20%</td>
+          <td id = "c2r2" onclick="changevalue2()">100%</td>
+          <td id = "c3r2" onclick="changevalue3()">100%</td>
+          <td id = "c4r2" onclick="changevalue4()">100%</td>
+          <td id = "c5r2" onclick="changevalue5()">100%</td>
+          <td id = "c6r2" class = "averageGrade" >77%</td>
+        </tr>
+
+
+        <tr>
+          <!-- row3 -->
+          <td>Tom</td>
+          <td> 29362962</td>
+          <td id = "c1r3" onclick="changevalue1r3()">90%</td>
+          <td id = "c2r3" onclick="changevalue2r3()">90%</td>
+          <td id = "c3r3" onclick="changevalue3r3()">90%</td>
+          <td id = "c4r3" onclick="changevalue4r3()">90%</td>
+          <td id = "c5r3" onclick="changevalue5r3()">90%</td>
+          <td id = "c6r3" class = "averageGrade">90%</td>
+        </tr>
+
+        <tr>
+            <!-- row4 -->
+            <!-- <td>Vin</td>
+            <td> 29362962</td>
+            <td id = "c1r4" onclick="changevalue1r4()">90%</td>
+            <td id = "c2r4"  onclick="changevalue2r4()">90%</td>
+            <td id = "c3r4"  onclick="changevalue3r4()">90%</td>
+            <td id = "c4r4"  onclick="changevalue4r4()">90%</td>
+            <td id = "c5r4"  onclick="changevalue5r4()">90%</td>
+            <td id = "c6r4" class = "averageGrade">90%</td> -->
+          </tr>
+
+          <tr>
+            <!-- <td>jacob</td>
+            <td> 29362962</td>
+            <td id = "c1r5" onclick="changevalue1r5()">90%</td>
+            <td id = "c2r5" onclick="changevalue2r5()">90%</td>
+            <td id = "c3r5" onclick="changevalue3r5()">90%</td>
+            <td id = "c4r5" onclick="changevalue4r5()">90%</td>
+            <td id = "c4r5" onclick="changevalue5r5()">90%</td>
+            <td class = "averageGrade">90%</td> -->
+          </tr>
+
+          <tr>
+            <!-- <td>ANTH</td>
+            <td> 29362962</td>
+            <td id = "c1r6" onclick="changevalue1r6()">90%</td>
+            <td id = "c2r6" onclick="changevalue2r6()">90%</td>
+            <td id = "c3r6" onclick="changevalue2r6()">90%</td>
+            <td id = "c4r6" onclick="changevalue2r6()">90%</td>
+            <td id = "c5r6" onclick="changevalue2r6()">90%</td>
+            <td class = "averageGrade" >90%</td> -->
+          </tr>
+
+          <tr>
+            <!-- <td>HARRY</td>
+            <td> 29362962</td>
+            <td id = "c1r7" onclick="changevalue1r7()">90%</td>
+            <td id = "c2r7" onclick="changevalue2r7()">90%</td>
+            <td id = "c3r7" onclick="changevalue3r7()">90%</td>
+            <td id = "c4r7" onclick="changevalue4r7()">90%</td>
+            <td id = "c5r7" onclick="changevalue5r7()">90%</td>
+            <td class = "averageGrade">90%</td> -->
+          </tr>
+
+          <tr>
+            <!-- <td>SARAH</td>
+            <td> 29362962</td>
+            <td id = "c1r8" onclick="changevalue1r8()">90%</td>
+            <td id = "c2r8" onclick="changevalue2r8()">90%</td>
+            <td id = "c3r8" onclick="changevalue3r8()">90%</td>
+            <td id = "c4r8" onclick="changevalue4r8()">90%</td>
+            <td id = "c5r8" onclick="changevalue5r8()">90%</td>
+            <td class = "averageGrade" >90%</td> -->
+          </tr>
+
+          <tr>
+            <!-- <td>LIZIE</td>
+            <td> 29362962</td>
+            <td id = "c1r9" onclick="changevalue1r9()">90%</td>
+            <td id = "c2r9" onclick="changevalue2r9()">90%</td>
+            <td id = "c3r9" onclick="changevalue3r9()">90%</td>
+            <td id = "c4r9" onclick="changevalue4r9()">90%</td>
+            <td id = "c5r9" onclick="changevalue5r9()">90%</td>
+            <td class = "averageGrade">90%</td> -->
+          </tr>
+
+          <tr>
+            <!-- <td>KAYONA</td>
+            <td> 29362962</td>
+            <td id = "c1r10" onclick="changevalue1r10()">90%</td>
+            <td id = "c2r10" onclick="changevalue2r10()">90%</td>
+            <td id = "c3r10" onclick="changevalue3r10()">90%</td>
+            <td id = "c4r10" onclick="changevalue4r10()">90%</td>
+            <td id = "c5r10" onclick="changevalue5r10()">90%</td>
+            <td class = "averageGrade">90%</td> -->
+          </tr>
+
+          <tr>
+            <!-- <td>JJ</td>
+            <td> 29362962</td>
+            <td id = "c1r11" onclick="changevalue1r11()">90%</td>
+            <td id = "c2r11" onclick="changevalue1r11()">90%</td>
+            <td id = "c3r11" onclick="changevalue1r11()">90%</td>
+            <td id = "c4r11" onclick="changevalue1r11()">90%</td>
+            <td id = "c5r11" onclick="changevalue1r11()">90%</td>
+            <td class = "averageGrade">90%</td> -->
+          </tr>
+      </table>
+
+     
+
+    
+  
+</body>
+</html>

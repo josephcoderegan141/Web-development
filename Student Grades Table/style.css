@@ -1,0 +1,36 @@
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  
+.button{
+
+
+  text-align: center;
+  /* position: absolute;
+  left: 10%;
+  top: 50%; */
+  height: 50px;
+  width: 100px;
+  background-color: red;
+  border-radius: 20%;
+  z-index: 2;
+  display: inline-block;
+
+}
+
+
+  
